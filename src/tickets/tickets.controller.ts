@@ -1,9 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
+import { TicketsService } from './tickets.service.js';
 
 @Controller('tickets')
 export class TicketsController {
+  constructor(private readonly ticketsService: TicketsService) {}
   @Get()
   findAll() {
-    return ['Ticket 1', 'Ticket 2', 'Ticket 3'];
+    return this.ticketsService.findAll();
   }
 }
